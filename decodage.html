@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faux Centre de Décodage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="explorer-page">
+    <header>
+        <h1>Centre de Décodage</h1>
+        <nav>
+            <a href="dashboard.html">Retour au tableau de bord</a>
+        </nav>
+    </header>
+    <main>
+        <div class="decode-container">
+            <h2>Entrez votre code :</h2>
+            <input type="text" id="code-input">
+            <button id="decode-button">Décoder</button>
+            <p id="decode-result">Toujours pas, réessayez.</p>
+        </div>
+        <div class="suggested-codes">
+            <h2>Codes suggérés :</h2>
+            <p>AB1234, ZETA437</p>
+        </div>
+    </main>
+    <script>
+        document.getElementById('decode-button').addEventListener('click', function () {
+            document.getElementById('decode-result').textContent = "Toujours pas, réessayez.";
+        });
+    </script>
+</body>
+</html>

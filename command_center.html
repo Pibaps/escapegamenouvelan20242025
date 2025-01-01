@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre de Commande</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-page">
+    <header>
+        <h1>Centre de Commande</h1>
+        <nav>
+            <a href="dashboard.html">Retour au tableau de bord</a>
+        </nav>
+    </header>
+    <main>
+        <div class="alert">Accès restreint au dossier ZETA.</div>
+        <div class="alert">Connexion aux satellites échouée.</div>
+        <div class="terminal">
+            <p>Terminal :</p>
+            <textarea rows="10" cols="50"></textarea>
+        </div>
+        <div class="clock">L'heure est figée.</div>
+
+        <p>Avant de pouvoir percer le mystère de l'<span id="hidden-trigger" class="hidden-trigger">énigme finale</span>, il vous faudra d'abord naviguer à travers une série de défis apparemment sans fin.</p>
+        <button id="hidden-button" class="command-center-button hidden-button">Accéder au carnet</button>
+    </main>
+    <script>
+        document.getElementById('hidden-trigger').addEventListener('click', function () {
+            document.getElementById('hidden-button').classList.add('hidden-button-visible');
+        });
+
+        document.getElementById('hidden-button').addEventListener('click', function () {
+            window.location.href = 'explorer.html';
+        });
+    </script>
+</body>
+</html>

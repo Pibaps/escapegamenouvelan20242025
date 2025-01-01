@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorer le Carnet</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body class="explorer-page">
+    <header>
+        <h1>Exploration</h1>
+        <nav>
+            <a href="dashboard.html">Retour au tableau de bord</a>
+        </nav>
+    </header>
+    <main>
+        <div id="sort-container" class="sort-container-small">
+            <h2>Réorganisez les soirées des cibles :</h2>
+            <ul id="sortable">
+                <li id="1">La soirée fatale chez Joseph, un groupe apparemment innocent mais en réalité perturbé par des "intrus" (sa sœur) avant de se réfugier chez Noelie, comme des fugitifs.</li>
+                <li id="2">Le Nouvel An 2024 chez Noelie, où l’ambiance a dégénéré avec l’ajout de sa sœur et de son copain, des éléments étrangers perturbant la cohésion de notre groupe initial.</li>
+                <li id="3">Une soirée chez Pierrick, mais l’objectif était l’évasion : une immersion totale dans des jeux vidéo, et une mission de cache-cache dans un salon en désordre. Les nouvelles règles étaient floues, un vrai test de survie.</li>
+                <li id="4">L’anniversaire d’Hortense en ville, elle a proposé des boissons, mais l'endroit, un bar banalisé, n'était qu'un écran de fumée pour une opération bien plus sombre…</li>
+                <li id="5">L’anniversaire d’Axel, Joseph et Pierrick, un rassemblement sous couvert d'une simple réunion chez Axel. Pourtant, des éléments inattendus (Tom et Mathis) ont participé à des festivités non planifiées.</li>
+                <li id="6">Sortie KFC & Accrobranche, un moment de faux réconfort, dissimulé sous une activité physique angoissante. Personne n'était préparé à la vraie nature de l'épreuve…</li>
+                <li id="7">Une soirée chez Hortense, caché dans l’ombre de la normalité. Un jeu de cache-cache où Joseph, celui que l’on croyait fiable, s’est dissimulé dans le canapé pendant l'arrivée d'autres “agents”.</li>
+                <li id="8">L’anniversaire de Pierrick, une couverture parfaite. De la nourriture simple (frites et nuggets) mais des dispositifs high-tech (casque VR), avant une sortie patinoire où Noelie s’est révélée être une pisteuse bien plus efficace que les autres.</li>
+                <li id="9">La soirée chez Joseph, un commencement de Noël qui ne laissait rien présager d’autre que des événements silencieux, mais déjà trop perturbants pour être ignorés.</li>
+            </ul>
+            <button id="validate-order">Valider</button>
+        </div>
+        <p id="result" class="hidden">Ordre bon : <span id="secret">Vous avez gagné on peut ouvrir les cadeaux ! </span></p>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function() {
+            // Mélanger l'ordre des éléments pour que les soirées ne soient pas dans le bon ordre
+            const listItems = $("#sortable li");
+            const shuffledItems = listItems.toArray().sort(() => Math.random() - 0.5);
+            $("#sortable").append(shuffledItems);
+
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
+        });
+
+        const correctOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+        document.getElementById('validate-order').addEventListener('click', function () {
+            const listItems = Array.from(document.querySelectorAll('#sortable li')).map(li => li.id);
+            if (JSON.stringify(listItems) === JSON.stringify(correctOrder)) {
+                document.getElementById('result').classList.remove('hidden');
+                document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Ordre incorrect !");
+            }
+        });
+    </script>
+</body>
+</html>
